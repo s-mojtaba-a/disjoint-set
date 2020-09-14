@@ -37,4 +37,63 @@ class disjoint_set:
             self.array[i][0]=a
         return a
         
-    
+// c++ impelemenation
+#include <bits/stdc++.h>
+using namespace std;
+#define long long ll
+
+class disjoint_set
+{
+private:
+    int num;
+    vector<pair<int, int>> arr;
+
+public:
+    disjoint_set(int n)
+    {
+        num = n;
+        for (int i = 1; i < n + 1; i++)
+        {
+            arr.push_back({i, 0});
+        }
+    }
+
+    int find(int a)
+    {
+        vector<int> p;
+        while (arr[a].first != a)
+        {
+            p.push_back(a);
+            a = arr[a].first;
+        }
+        for (auto i : p)
+        {
+            arr[i].first = a;
+        }
+        return a;
+    }
+
+    bool _union_(int a, int b)
+    {
+        a = find(a);
+        b = find(b);
+        if (a == b)
+        {
+            return 0;
+        }
+
+        if (arr[a].second > arr[b].second)
+        {
+            arr[b].second = a;
+        }
+        else if (arr[a].second < arr[b].second)
+        {
+            arr[a].first = b;
+        }
+        else
+        {
+            arr[a].first = b;
+            arr[b].second++;
+        }
+    }
+};
