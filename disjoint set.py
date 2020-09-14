@@ -52,6 +52,7 @@ public:
     disjoint_set(int n)
     {
         num = n;
+        arr.push_back({0,0});
         for (int i = 1; i < n + 1; i++)
         {
             arr.push_back({i, 0});
@@ -84,7 +85,7 @@ public:
 
         if (arr[a].second > arr[b].second)
         {
-            arr[b].second = a;
+            arr[b].first = a;
         }
         else if (arr[a].second < arr[b].second)
         {
