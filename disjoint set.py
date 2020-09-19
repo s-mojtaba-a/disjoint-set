@@ -52,6 +52,7 @@ public:
     disjoint_set(int n)
     {
         num = n;
+        arr.reserve(n+1) ;
         arr.push_back({0,0});
         for (int i = 1; i < n + 1; i++)
         {
@@ -96,5 +97,6 @@ public:
             arr[a].first = b;
             arr[b].second++;
         }
+        return 1 ;
     }
 };
